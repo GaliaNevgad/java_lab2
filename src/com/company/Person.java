@@ -6,15 +6,34 @@ public class Person {
     String name;
     String surname;
     int age;
-    List<String> hobby;
+    String birthdayCity;
 
-    /*public boolean equals(Object o) {
-        if (this == o)
+    public Person(String name, String surname, int age, String birthdayCity){
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.birthdayCity = birthdayCity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+       if (this == o)
             return true;
-        if (null == o)
+        if (o == null || getClass() != o.getClass())
             return false;
-        if (o.getClass() != getClass()) {
+        Person personEq = (Person) o;
+        if (!this.name.equalsIgnoreCase(personEq.name)) {
             return false;
-        }
-    }*/
+        }else if(!this.surname.equalsIgnoreCase(personEq.surname)){
+            return false;
+        }else if(this.age !=personEq.age){
+            return false;
+        }else return this.birthdayCity.equalsIgnoreCase(personEq.birthdayCity);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return this.age;
+    }
 }
